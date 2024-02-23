@@ -7,22 +7,29 @@ pygame.init()
 SCREENX, SCREENY = 500, 500
 window = pygame.display.set_mode((SCREENX, SCREENY))
 
+x, y, width, height = 100, 100, 50, 50
+velocity = 10
+
 pygame.display.set_caption("Template code")
 
 run = True
 
 while run:
+    pygame.time.delay(50)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
     keys = pygame.key.get_pressed()
     if keys[pygame.K_UP]:
-        pass
+        y -= velocity
     if keys[pygame.K_DOWN]:
-        pass
+        y += velocity
     if keys[pygame.K_LEFT]:
-        pass
+        x -= velocity
     if keys[pygame.K_RIGHT]:
-        pass
+        x += velocity
     
+    window.fill('black')
+    pygame.draw.rect(window, (255,0, 0), (x, y, width, height))
+    pygame.display.update()
 pygame.quit()
